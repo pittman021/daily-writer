@@ -1,20 +1,19 @@
-
-
 html {
   position:relative; 
   min-height: 100%;
   }
   
   html, body, textarea {
-  font-family: 'Roboto', serif;
+  font-family: 'Roboto Slab', serif;
   font-weight: 400;
   font-size: 17px;
   margin:0;
-  padding:25px;
-  }
+  }     
   
   textarea {
       min-height:200px;
+      font-size:18px;
+      color:black;
       width: 800px;
       border: none;
       resize:none;
@@ -28,9 +27,21 @@ html {
       background: white;
   }
 
-  #hero-cta-content {
-    max-width: 725px;
-}
+  .font-accent {
+      font-family: 'Roboto', sans-serif;
+  }
+
+  .title {
+      color:#2F3B51
+  }
+
+  .accent {
+    color: #3676CC
+  }
+
+  .accent-2 {
+      color: #F53C52
+  }
 
 .auth-box {
   width:400px;
@@ -112,7 +123,7 @@ html {
   }
   
   .active {
-      background: #0066ff
+      background: #F53C52
   }
 
   footer {
@@ -124,4 +135,10 @@ html {
    #writer-footer {
        height: 100px;
    }
+
+
+  
+
+
+
 

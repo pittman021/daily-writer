@@ -1,51 +1,28 @@
 <% include ./application/_header.ejs %>
+ 
+  </section>
+  <section id="homepage-hero" class="hero is-fullheight-with-navbar has-text-centered">
 
-  <section class="hero is-small is-bold">
     <div class="hero-head">
+
         <% include ./application/_navbar.ejs %>
+
     </div>
     <div class="hero-body">
       <div class="container">
           <div class="columns hero-ctas">
               <div class="column is-12" id="hero-cta-content">
-                <h1 class="title is-1" id="hero-title"><%= site.title %>
+                  <img id="hero-logo" src="/images/notebook.png" style="height:80px; width:80px"><h1 class="title is-1" id="hero-title"><%= site.title %>
                   </h1>
                 <!-- <h2 class="subtitle is-4">(Financial Independence, Retire Early)</h2> -->
               <div id="hero-subtitle">
-                      <p class="subtitle"><%= site.description %></p>
+                      <p class="subtitle font-accent"><%= site.description %></p>
               </div>
               <br>
 
-        <div id="hero-home-signup">
-          <!-- Begin Mailchimp Signup Form -->
-          <div id="mc_embed_signup">
-            <form action="https://timpittman.us7.list-manage.com/subscribe/post?u=5da9220e0fdafc842defd9112&amp;id=e16ce6c8ed" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-              <div class="field has-addons" id="mc_embed_signup_scroll">
-                <p class="control is-expanded">
-                  <input type="email" value="" name="EMAIL" class="email input" id="mce-EMAIL" placeholder="Email Address" required>
-                </p>
-                <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                  <input class="input" type="text" name="b_5da9220e0fdafc842defd9112_e16ce6c8ed" tabindex="-1" value="">
-                </div>
-                <div class="control">
-                  <input type="submit" value="I'm in!" name="subscribe" id="mc-embedded-subscribe" class="button is-info">
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+      <div class="get-started">
+        <a href="/signup" class="button">Get Started</a>
+      </div>
       </div>
     </div>
   </section>
-    </div>
-      </div>
-
-    <div class="container">
-      <div class="section content">
-        <div class="has-text-centered">
-        <h2>Section 2</h2>
-        </div>
-      </div>
-    </div>
-
-    <% include ./application/_footer.ejs %>

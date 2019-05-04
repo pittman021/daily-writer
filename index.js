@@ -33,8 +33,8 @@ app.use(flash());
   }
   app.locals.author = {
       name: 'tim pittman',
-      email: 'email address',
-      twitter: '@twitterhandle',
+      email: 'tim.pittman021@gmail.com',
+      twitter: '@pittman021',
       linkedIn: 'linkedin.com'
   }
   app.locals.google_analytics = {

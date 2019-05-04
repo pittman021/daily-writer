@@ -42,8 +42,7 @@ module.exports = app => {
 
     
     const updates = req.body
-    console.log(updates);
-    console.log(req.params.id);
+
     db.note.update({
       content: req.body.content,
       word_count: req.body.word_count
