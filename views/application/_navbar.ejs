@@ -17,18 +17,19 @@
           <div class="navbar-end">
             <div class="tabs is-right">
                 <ul>
-                  <li class="navbar-item">
+                  <!-- <li class="navbar-item">
                     <a href="/about">About</a>
-                    </li>
-                    <li class="navbar-item">
-                      <a href="/login">Login</a>
-                  </li>
+                    </li> -->
+                    
                     <% if(user) { %>
                       <li class="navbar-item">
                         <a href="/logout">Logout</a>
                     </li>
+                  <% } else { %>
+                    <li class="navbar-item">
+                      <a href="/login">Login</a>
+                  </li>
                   <% } %>
-    
               </ul>
             </div>
           </div>

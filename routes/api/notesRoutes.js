@@ -8,12 +8,6 @@ module.exports = app => {
 
     app.get('/api/v1/notes', (req,res) => {
 
-      // var days = daysInMonth( moment().month() );
-      // var m = new Date().getMonth();
-      // loop through days & compare if that equals the day.
-      // create array & push it in there. 
-      // console.log(days)
-
       db.note.findAll({
         where: { 
           userId: req.user.id,
@@ -30,6 +24,39 @@ module.exports = app => {
       }).catch(err => {
         console.log(err);
       });
+  });
+
+  app.post('/api/v1/notes/new', (req,res) => {
+    db.note.create({
+      userId: req.user.id,
+      content: req.body.content,
+      word_count: req.body.word_count
+    }).then(newNote => {
+      res.status(200).json(newNote)
+    }).catch(err => {
+      console.log(err);
+    })
+  });
+
+  app.put('/api/v1/notes/:id/edit', async (req,res) => {
+
+    
+    const updates = req.body
+    console.log(updates);
+    console.log(req.params.id);
+    db.note.update({
+      content: req.body.content,
+      word_count: req.body.word_count
+    },
+    { where: { id: req.params.id },
+    returning: true,
+    plain:true
+    }).then(updatedNote => {
+      console.log(updatedNote)
+      res.json(updatedNote);
+    }).catch(err => {
+      console.log(err);
+    })
   });
 
 }

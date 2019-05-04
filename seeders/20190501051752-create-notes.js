@@ -5,7 +5,6 @@ const moment = require('moment');
 module.exports = {
   up: (queryInterface, Sequelize) => {
     var note = {
-      id: 1,
       userId: 1,
       content: 'hello this is the best thing ever',
       word_count: 7,
@@ -14,7 +13,6 @@ module.exports = {
     };
 
     var note2 = {
-      id: 2,
       userId: 1,
       content: 'this is todays note!',
       word_count: 4,

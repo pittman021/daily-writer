@@ -1,18 +1,26 @@
 <% include ../application/_header.ejs %>
 
+<% include ../application/_navbar.ejs %>
+
 <div class="main">
     <div class="header">
-       <h1>Simple Journal</h1>
-       <h3 class="grey" id="todays-date">Today's Date</h3>
-   </div>
+       <h1 class="title is-2">Simple Journal</h1>
+       <h3 class="subtitle is-4 " id="todays-date">Today's Date</h3>
+   </div><br>
        <div id="month-dates"></div>
        <div class="textarea-container">
                <textarea id="textArea"></textarea>
        </div>
-    <div class="word-count">
-        <p>Word Count: <span id="count"></span></p>
-        <p class="green text-small" id="save-status"></p>
-    </div>
+    <footer id="writer-footer">
+        <div class="word-count">
+            <p>Word Count: <span id="count"></span></p>
+        </div>
+
+        <div class="save-status">
+            <p class="green text-small" id="save-status"></p>
+        </div>
+            
+    </footer>
 </div>
 
-   <% include ../application/_footer.ejs %>
+<script async type="text/javascript" src="/js/app.js"></script>

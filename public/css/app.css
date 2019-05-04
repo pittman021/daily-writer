@@ -49,6 +49,7 @@ html {
     }
   
   .main {
+  
       margin: 0 auto;
       width:800px;
   }
@@ -83,7 +84,7 @@ html {
   
   .word-count {
       width:150px;
-      float:left
+      float:left;
   }
   
   .green {
@@ -93,11 +94,12 @@ html {
   .text-small {
       font-size: .75em;
   }
-  
-  #save-status {
-      margin-top: -20px;
+
+  .save-status {
+    width:150px;
+    margin-top: 20px;
   }
-  
+    
   .grey {
       color:grey;
   }
@@ -112,3 +114,14 @@ html {
   .active {
       background: #0066ff
   }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+   }
+
+   #writer-footer {
+       height: 100px;
+   }
+
