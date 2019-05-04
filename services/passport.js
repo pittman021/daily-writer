@@ -8,7 +8,9 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  db.AdminUsers.findById(id).then(user => {
+  db.user.findOne({
+    where: { id: id }
+  }).then(user => {
     return done(null, user);
   });
 });
@@ -20,7 +22,7 @@ var generateHash = function(password) {
 passport.use(
   'local-signup',
   new LocalStrategy(function(username, password, done) {
-    db.AdminUsers.findOne({
+    db.user.findOne({
       where: { username: username }
     }).then(user => {
       if (user) {
@@ -33,7 +35,7 @@ passport.use(
           username: username,
           password: userPassword
         };
-        db.AdminUsers.create(data).then(newUser => {
+        db.user.create(data).then(newUser => {
           return done(null, newUser);
         });
       }
@@ -48,7 +50,7 @@ passport.use(
       return bCrypt.compareSync(password, userpass);
     };
 
-    db.AdminUsers.findOne({
+    db.user.findOne({
       where: { username: username }
     })
       .then(user => {

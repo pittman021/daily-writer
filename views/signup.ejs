@@ -1,0 +1,34 @@
+<% include ./application/_header.ejs %>
+
+<div id="auth">
+<div class="auth-box">
+
+		<% if ( message.length > 0 ) { %>
+			<div class="flash"><%= message %></div>
+		<% } %>
+		
+	<h2>Sign Up</h2>
+<form action="/signup" method="post">
+	<div class="field">
+		<div class="control">
+			<input class="input" type="text" name="username" placeholder="username" >
+		</div>
+	</div>
+	<div class="field">
+		<div class="control">
+			<input class="input" type="password" name="password" placeholder="password" >
+		</div>
+	</div>
+	<input class="button" type="submit"></input>
+</form>
+
+<a href="/login">Login</a>
+</div>
+
+
+
+</div>
+
+
+
+<% include ./application/_footer.ejs %>

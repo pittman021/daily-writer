@@ -1,0 +1,18 @@
+<% include ../application/_header.ejs %>
+
+<div class="main">
+    <div class="header">
+       <h1>Simple Journal</h1>
+       <h3 class="grey" id="todays-date">Today's Date</h3>
+   </div>
+       <div id="month-dates"></div>
+       <div class="textarea-container">
+               <textarea id="textArea"></textarea>
+       </div>
+    <div class="word-count">
+        <p>Word Count: <span id="count"></span></p>
+        <p class="green text-small" id="save-status"></p>
+    </div>
+</div>
+
+   <% include ../application/_footer.ejs %>

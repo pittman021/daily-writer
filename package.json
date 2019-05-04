@@ -1,5 +1,5 @@
 {
-  "name": "node-starter",
+  "name": "simple-journal",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,8 +15,10 @@
     "bulma": "^0.7.4",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "express-flash": "0.0.2",
     "express-session": "^1.16.1",
     "method-override": "^3.0.0",
+    "momentjs": "^2.0.0",
     "nodemon": "^1.18.11",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",

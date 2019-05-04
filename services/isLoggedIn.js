@@ -1,6 +1,6 @@
 function isLoggedIn(req, res, next) {
     if (!req.user) {
-      res.redirect('/admin/login');
+      res.redirect('/login');
     } else {
       next();
     }

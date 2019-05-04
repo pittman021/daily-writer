@@ -1,19 +1,114 @@
+
+
 html {
-    font-size: 17px;
+  position:relative; 
+  min-height: 100%;
   }
   
-  body {
-    font-family: 'Roboto', sans-serif;
+  html, body, textarea {
+  font-family: 'Roboto', serif;
+  font-weight: 400;
+  font-size: 17px;
+  margin:0;
+  padding:25px;
   }
   
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    font-family: 'Roboto', serif;
+  textarea {
+      min-height:200px;
+      width: 800px;
+      border: none;
+      resize:none;
+      overflow-y:hidden;
+      outline:none;
+      position:relative;
+  }
+  
+  textarea:disabled {
+      color: darkgrey;
+      background: white;
   }
 
-#hero-cta-content {
+  #hero-cta-content {
     max-width: 725px;
 }
+
+.auth-box {
+  width:400px;
+  height:400px;
+  margin: 0 auto;
+  text-align:center;
+  margin-top:10%;
+}
+  
+  .row {
+      display: flex;
+    }
+    
+    .column {
+      flex: 50%;
+    }
+  
+  .main {
+      margin: 0 auto;
+      width:800px;
+  }
+  
+  .header {
+      text-align:center;
+  }
+  
+  .success {
+      color:green;
+      font-weight:bold;
+  }
+  
+  li:active {
+      background-color: blue;
+  }
+  
+  #word-goal li {
+      display: inline;
+  }
+  
+  #word-goal ul {
+      padding: 0px;
+  }
+  
+  #month-dates {
+      width:800px;
+      margin:0 auto;
+      margin-bottom:25px;
+      text-align:center;
+  }
+  
+  .word-count {
+      width:150px;
+      float:left
+  }
+  
+  .green {
+      color:green
+  }
+  
+  .text-small {
+      font-size: .75em;
+  }
+  
+  #save-status {
+      margin-top: -20px;
+  }
+  
+  .grey {
+      color:grey;
+  }
+  
+  .button-day {
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      margin-left: 5px;
+  }
+  
+  .active {
+      background: #0066ff
+  }

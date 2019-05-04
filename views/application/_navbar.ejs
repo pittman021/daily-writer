@@ -20,9 +20,12 @@
                   <li class="navbar-item">
                     <a href="/about">About</a>
                     </li>
-                    <% if(adminUser) { %>
+                    <li class="navbar-item">
+                      <a href="/login">Login</a>
+                  </li>
+                    <% if(user) { %>
                       <li class="navbar-item">
-                        <a href="/admin/logout">Logout</a>
+                        <a href="/logout">Logout</a>
                     </li>
                   <% } %>
     

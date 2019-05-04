@@ -2,11 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const methodOverride = require('method-override');
+const flash = require('express-flash');
 
 
 // Turn these on when you initiate the DB // 
-// require('./services/passport');
-// const db = require('./models/index');
+require('./services/passport');
+const db = require('./models/index');
 
 const bCrypt = require('bcrypt-nodejs');
 
@@ -21,16 +22,17 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveU
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(function(req, res, next) {
-  res.locals.adminUser = req.user;
+  res.locals.user = req.user;
   next();
 });
+app.use(flash());
 
   app.locals.site =  {
-      title: 'Site Title',
-      description: 'This is your site description. Update it in your sites configuration file'
+      title: 'simple journal',
+      description: 'the simplest place to write everyday and create your streak'
   }
   app.locals.author = {
-      name: 'author name',
+      name: 'tim pittman',
       email: 'email address',
       twitter: '@twitterhandle',
       linkedIn: 'linkedin.com'
@@ -65,11 +67,14 @@ app.use(function(req, res, next) {
 //   console.log('user created');
 // });
 
-// db.sequelize.sync();
+db.sequelize.sync();
 
 // ROUTES //
-// require('./routes/adminRoutes')(app);
+require('./routes/adminRoutes')(app);
+require('./routes/writeRoutes')(app);
+require('./routes/api/notesRoutes')(app);
 require('./routes/pageRoutes')(app);
+
 
 let port = process.env.PORT || 3000;
 app.listen(port, () => {
