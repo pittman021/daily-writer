@@ -13,28 +13,22 @@
         </div>
     
         <div class="navbar-menu">
-    
           <div class="navbar-end">
-      
-                <ul>
-                  <!-- <li class="navbar-item">
-                    <a href="/about">About</a>
-                    </li> -->
-                    
                     <% if(user) { %>
-                      <li class="navbar-item">
-                      
-                        <a class="accent-2 font-accent bold" href="/logout">Logout</a>
-                    </li>
+                      <div class="navbar-item">
+                        <a class="accent bold" href="/write">Write</a>
+                      </div>
+                      <div class="navbar-item">
+                        <a class="accent bold" href="/logout">Logout</a>
+                      </div>
                   <% } else { %>
-                    <li class="navbar-item">
-                      <a class="accent-2 font-accent" href="/login">Login</a>
-                  </li>
+                    <div class="navbar-item">
+                      <a class="accent" href="/login">Login</a>
+                    </div>
                   <% } %>
-              </ul>
      
           </div>
-          </div>
         </div>
-        </nav>
+      </div>
+    </nav>
   

@@ -11,8 +11,11 @@
     <div class="hero-body">
       <div class="container">
           <div class="columns hero-ctas">
+            <!-- <div class="column is-3">
+                <img id="hero-logo" src="/images/notebook.png" style="height:100px; width:100px">
+            </div> -->
               <div class="column is-12" id="hero-cta-content">
-                  <img id="hero-logo" src="/images/notebook.png" style="height:80px; width:80px"><h1 class="title is-1" id="hero-title"><%= site.title %>
+                <h1 class="title" id="hero-title"><%= site.title %>
                   </h1>
                 <!-- <h2 class="subtitle is-4">(Financial Independence, Retire Early)</h2> -->
               <div id="hero-subtitle">
@@ -26,3 +29,5 @@
       </div>
     </div>
   </section>
+
+  <% include ./application/_footer.ejs %>

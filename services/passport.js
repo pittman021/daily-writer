@@ -2,6 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bCrypt = require('bcrypt-nodejs');
 const db = require('../models/index');
+const moment = require('moment');
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -23,17 +24,22 @@ passport.use(
   'local-signup',
   new LocalStrategy(function(username, password, done) {
     db.user.findOne({
-      where: { username: username }
+      where: { email: username }
     }).then(user => {
       if (user) {
         return done(null, false, {
-          message: 'Username is taken'
+          message: 'email is taken'
         });
       } else {
         const userPassword = generateHash(password);
+
+        const today = new Date();
+
         var data = {
-          username: username,
-          password: userPassword
+          email: username,
+          password: userPassword,
+          is_trialing: true,
+          trial_end_date:  moment(new Date(), "YYYY-MM-DD HH:mm:ss").add(14, 'days').toISOString(),
         };
         db.user.create(data).then(newUser => {
           return done(null, newUser);
@@ -50,8 +56,10 @@ passport.use(
       return bCrypt.compareSync(password, userpass);
     };
 
+    console.log(username);
+
     db.user.findOne({
-      where: { username: username }
+      where: { email: username }
     })
       .then(user => {
         if (!user) {
@@ -68,7 +76,7 @@ passport.use(
         }
 
         const userinfo = user.get();
-        console.log(userinfo);
+        
         return done(null, userinfo);
       })
       .catch(err => {

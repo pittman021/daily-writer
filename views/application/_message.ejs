@@ -1,0 +1,9 @@
+<div class="alert">
+
+    <% if (trialUser) { %>
+        <% if(trialUser.is_trialing) { %>
+        <p>You have <%= trialUser.days_remaining %> days remining on your trial. Write on! If you're ready <a href="/plans">sign up.</a></p>
+        <% } %>
+    </div> 
+    <% } %>
+<br>

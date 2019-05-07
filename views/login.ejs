@@ -2,7 +2,7 @@
 
 <div id="auth">
 <div class="auth-box">
-			<h2>Login</h2>
+			<h2>Login</h2><br>
 
 			<% if ( message.length > 0 ) { %>
 				<div class="flash"><%= message %></div>
@@ -22,11 +22,10 @@
 				</div>
 				<input class="button" type="submit"></input>
 			</form>
-
+			<br>
 			<a href="/signup">Sign Up</a>
 
 		</div>
 </div>
-
 
 <% include ./application/_footer.ejs %>

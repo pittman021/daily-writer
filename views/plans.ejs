@@ -1,0 +1,27 @@
+<% include ./application/_header.ejs %>
+
+<% include ./application/_navbar.ejs %>
+
+
+
+
+<div class="container main">
+
+    <section class="section content has-text-centered">
+        <h2>Get unlimted access to <%= site.title %></h2><br>
+<div class="columns has-text-centered">
+
+        <% plans.data.forEach(function(plan) { %>
+            <div class="column">
+                <h3><%= plan.nickname %> $<%= plan.amount / 100 %>.00</h3>
+                <a class="button" href="purchase?plan=<%= plan.id %>">Purchase Now</a>
+            </div>
+        <% }) %>
+</div>
+</section>
+
+</div>
+
+
+
+<% include ./application/_footer.ejs %>

@@ -27,16 +27,17 @@ html {
       background: white;
   }
 
-  .font-accent {
-      font-family: 'Roboto', sans-serif;
+  footer {
+      background-color: #ffffff
   }
 
   .title {
-      color:#2F3B51
+      font-family: 'Heebo', sans-serif;
+      color: #4C5454
   }
 
   .accent {
-    color: #3676CC
+    color: #4E5454
   }
 
   .accent-2 {
@@ -74,12 +75,16 @@ html {
       font-weight:bold;
   }
   
-  li:active {
-      background-color: blue;
-  }
-  
   #word-goal li {
       display: inline;
+  }
+
+  #hero-title {
+      font-size: 5em;
+  }
+
+  #hero-subtitle {
+      margin-top: -20px;
   }
   
   #word-goal ul {
@@ -123,17 +128,23 @@ html {
   }
   
   .active {
-      background: #F53C52
+      background: #E09843
   }
 
-  footer {
+  .footer {
     position: absolute;
+    padding-bottom: 2.5rem;
     bottom: 0;
     width: 100%;
+    background-color: #ffffff
    }
 
    #writer-footer {
-       height: 100px;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 2rem;
+    width:100%;
+    position: absolute;
    }
 
 

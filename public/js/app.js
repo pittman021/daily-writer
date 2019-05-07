@@ -1,6 +1,6 @@
 class Journal {
     constructor() {
-        this.text = 'hello';
+        this.text = '';
         this.isActive = ''
         this.wordCount = 0;
         this.data = ''
@@ -27,15 +27,34 @@ class Journal {
     bindEvents() {
         textArea.addEventListener('keyup', (e) => this.setText(e));
         this.monthDates.addEventListener('click', (e) => this.chooseDraftDate(e));
-        textArea.addEventListener("input", this.OnInput, false);
+        textArea.addEventListener("change", this.OnInput, false);
+        }
+
+       getScrollParent(node) {
+            if (node == null) {
+                return null;
+            }
+        
+            if (node.scrollHeight > node.clientHeight) {
+                return node;
+            } else {
+                return getScrollParent(node.parentNode);
+            }
         }
 
         OnInput() {
-            this.style.height = 'auto';
-            this.style.height = (this.scrollHeight) + 'px';
-            textArea.scrollTop = textArea.scrollHeight;
+        
+            const scrollParent = that.getScrollParent(this);
+            const scrollTop = scrollParent ? scrollParent.scrollTop : null;
+            const scrollLeft = scrollParent ? scrollParent.scrollLeft : null;
+        
+            this.style.height = "auto";
+            this.style.height = this.scrollHeight + "px";
+        
+            if (scrollParent) {
+                scrollParent.scrollTo(scrollLeft, scrollTop);
             }
-    
+        }
     
     loadNotes() {
 
@@ -71,6 +90,7 @@ class Journal {
 
                 this.data.push(note);
                 this.isActive = this.data.length - 1
+                this.text = this.data[this.isActive].content
                 this.buildButtonList();
                 this.render();
             } else {

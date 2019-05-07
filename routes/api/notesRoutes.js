@@ -51,7 +51,7 @@ module.exports = app => {
     returning: true,
     plain:true
     }).then(updatedNote => {
-      console.log(updatedNote)
+     
       res.json(updatedNote);
     }).catch(err => {
       console.log(err);

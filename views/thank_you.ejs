@@ -1,0 +1,32 @@
+<% include ./application/_header.ejs %>
+
+<% include ./application/_navbar.ejs %>
+
+<div class="container content" id="main">
+
+        <div class="auth-box">
+
+        <h2> Thank You!</h2>
+
+        <br>
+
+        <p>Your confirmation details are below!</p>
+
+        <p>Click <a href="/write">here</a> go back and begin writing</p>
+
+      
+
+            <p>Plan Name: <%= site.title %> <%= confirmation.plan.nickname %></p>
+            
+            <p>Plan Amount: $<%= confirmation.plan.amount / 100 %>.00 per <%= confirmation.plan.interval %></p>
+
+            <p>View Your Invoice <a href="<%= confirmation.latest_invoice.hosted_invoice_url %>">Here</a></p>
+
+        </div>
+
+        If you have any questions, reach out to <a href="mailto:support@simplejournal.com">support</a> 
+
+</div>
+
+
+<% include ./application/_header.ejs %>
