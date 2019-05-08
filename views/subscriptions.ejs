@@ -1,0 +1,63 @@
+<% include ./application/_header.ejs %>
+
+<% include ./application/_navbar.ejs %>
+
+
+<div class="container main">
+
+    <section class="section content">
+<div class="columns">
+
+    <div class="column is-12">
+    <h2>Customer Information</h2>
+        <p>Email: <%= customer.email %></p>
+    
+    <h2>Payment Details</h2>
+        <p>Card Type: <%= customer.sources.data[0].brand %></p>
+        <p>Last 4: <%= customer.sources.data[0].last4 %></p>
+        <p>Exp Month: <%= customer.sources.data[0].exp_month %></p>
+        <p>Exp Year: <%= customer.sources.data[0].exp_year %></p>
+
+    <h2>Subscription</h2>
+
+    <p>Plan Name: <%= customer.subscriptions.data[0].plan.nickname %></p>
+    <p>Amount: <%= customer.subscriptions.data[0].plan.amount / 100 %>.00 </p>
+
+    <h2>Invoices</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td>Invoice #</td>
+                    <td>Amount</td>
+                    <td>Status</td>
+                    <td>Date Paid</td>
+                    <td>Invoice Link</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% invoices.data.forEach(function(i) { %>
+                  <tr>
+                    <td><%= i.number %></td>
+                    <td><%= i.total / 100 %>.00 </td>
+                    <td><%= i.status %></td>
+                    <td><%= new Date(i.period_end * 1000).toLocaleDateString("en-US") %> </td>
+                    <td><a href="<%= i.hosted_invoice_url %>">Link</a></td>
+                        </a>  
+                  </tr>
+                 
+                <% }); %>
+                
+            </tbody>
+        </table>
+  
+    </ul>
+
+</div>
+
+
+ 
+ 
+</div>
+</section>
+
+</div>

@@ -3,7 +3,14 @@
 
 <div class="container">
 
+
 <div class="auth-box">
+
+    <% if(message) { %>
+      <% if ( message.length > 0 ) { %>
+        <div class="flash"><%= message %></div>
+      <% } %>
+    <% } %>
 
 <form action="/charge?plan=<%= plan %>" method="post" id="payment-form">
     <div class="form-row">

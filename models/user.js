@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     is_trialing: DataTypes.BOOLEAN,
+    stripe_customer_id: DataTypes.STRING,
     trial_end_date: DataTypes.DATE
   }, {});
   user.associate = function(models) {
