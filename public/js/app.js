@@ -7,6 +7,9 @@ class Journal {
         this.save = true;
         this.timeoutId;
         this.date = moment().startOf('day').format('YYYY-MM-DD');
+        this.goal = 100;
+        this.currentStreak = 0;
+        this.isExpired = false;
         
         // get things going // 
         this.cacheDom();
@@ -22,6 +25,7 @@ class Journal {
         this.todaysDate = document.querySelector('#todays-date');
         this.monthDates = document.querySelector('#month-dates');
         this.tx = document.getElementsByTagName('textarea');
+        this.currentStreakEl = document.querySelector('#currentStreak');
     }
 
     bindEvents() {
@@ -63,7 +67,8 @@ class Journal {
          .then(function(res) {
              return res.json();
          }).then(function(res) {
-             this.data = res;
+             this.data = res.notes;
+             this.isExpired = res.trialExpired;
              this.init();
          }.bind(this))
 
@@ -83,7 +88,7 @@ class Journal {
 
                 // create a blank object for today's draft // 
                 var note = {
-                    content: 'Today is a new day! Start writing =)',
+                    content: '',
                     createdAt: this.date
 
                 }
@@ -113,6 +118,8 @@ class Journal {
         this.count.innerText = this.getWordCount(this.text);
         this.textArea.style.height = 'auto';
         this.textArea.style.height = (this.textArea.scrollHeight) + 'px';
+        this.currentStreakEl.innerText = this.currentStreak;
+        
     }
 
   
@@ -129,7 +136,7 @@ class Journal {
 
     saveDraftToStorage() {
 
-
+        if(this.isExpired) return;
         // need to check if this is in the current data
         // if not then you need to submit a post request
         // if so, then submit an update request for that record
@@ -189,38 +196,59 @@ class Journal {
     }
 
     buildButtonList() {
+    // get # of days in month = [5-1,5-2,etc...]
     var days = this.daysInMonth( moment().month() );
+
+
+    // for each day build the buttons 
     days.forEach(function(day,key) {
+
+        // get the month's day starting with 1. 
         var dayMonth = key + 1;
+
         // get the month 
         var m = new Date().getMonth();
+
+        // build that day's date, and format it. 
         var date = moment(new Date(2019,m,dayMonth)).startOf('day').format('YYYY-MM-DD');
-    
-        var pos = this.data.map(function(e) { return moment(e.createdAt).startOf('day').format('YYYY-MM-DD'); }).indexOf(date);
-        if(pos === -1) {
-            this.addDateButton(day,dayMonth,date, true)
-        } else {
-            this.addDateButton(day,dayMonth,date, false);
         
+        // check whether there is writing for that day in data. 
+        var pos = this.data.map(function(e) { return moment(e.createdAt).startOf('day').format('YYYY-MM-DD'); }).indexOf(date);
+        
+        // if its later this month, no color. 
+        if(date > this.date) {
+            this.addDateButton(dayMonth, date, 'none');
+
+        // if today is before today, doesn't exist, or is below 100, none & streak dies. 
+        } else if(pos === -1 || this.data[pos].word_count < this.goal) { 
+            this.addDateButton(dayMonth, date, 'none');
+            this.currentStreak = 0;
+            // else if it is before today & its above 100, streak continues. 
+        }  else {
+            this.currentStreak++;
+            this.addDateButton(dayMonth, date, 'goal');
         }
+
     }.bind(this));
     }
 
-    addDateButton(buttonText, day, date, disabled) {
+    addDateButton(day, date, goal) {
         // create the button 
         var p = document.createElement('button');   
 
-        // make button blue if there's writing in it // 
-        if(!disabled) {
-            p.classList.add('active');
-          }
+        // make button orange if there's writing in it // 
+        const style = goal === 'goal' ? 'active' : goal === 'noGoal' ? 'inactive' : 'none'
 
+        if(date <= this.date) {
+            p.classList.add('border');
+        }
+        
         // add class, data-val and append to mothDatesdiv. Set ac
         p.classList.add('button-day');
         p.setAttribute('data-day', day)
         p.title = moment(date).format('M-D')
         this.monthDates.appendChild(p);
-        // p.disabled = disabled;
+        p.classList.add(style);
   }
 
     daysInMonth(month) {

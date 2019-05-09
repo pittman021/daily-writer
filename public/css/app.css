@@ -131,6 +131,14 @@ html {
       background: #E09843
   }
 
+  .inactive {
+      background: lightgray;
+  }
+
+  .border {
+      border-color:black;
+  }
+
   .footer {
     position: absolute;
     padding-bottom: 2.5rem;

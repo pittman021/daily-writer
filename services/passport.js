@@ -37,9 +37,9 @@ passport.use(
 
         var data = {
           email: username,
-          password: userPassword,
-          is_trialing: true,
-          trial_end_date:  moment(new Date(), "YYYY-MM-DD HH:mm:ss").add(14, 'days').toISOString(),
+          password: userPassword
+          // is_trialing: true,
+          // trial_end_date:  moment(new Date(), "YYYY-MM-DD HH:mm:ss").add(14, 'days').toISOString()
         };
         db.user.create(data).then(newUser => {
           return done(null, newUser);
@@ -55,8 +55,6 @@ passport.use(
     const isValidPassword = function(userpass, password) {
       return bCrypt.compareSync(password, userpass);
     };
-
-    console.log(username);
 
     db.user.findOne({
       where: { email: username }

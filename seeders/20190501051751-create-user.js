@@ -20,7 +20,7 @@ module.exports = {
       email: 'tim.pittman021@gmail.com',
       password: userPassword,
       is_trialing: true,
-      trial_end_date: moment(today, "YYYY-MM-DD HH:mm:ss").add(14, 'days').toISOString(),
+      trial_end_date: moment(today, "YYYY-MM-DD HH:mm:ss").subtract(5, 'days').toISOString(),
       createdAt: new Date(),
       updatedAt: new Date()
     };

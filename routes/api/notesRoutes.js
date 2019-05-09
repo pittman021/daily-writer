@@ -3,10 +3,11 @@ const isLoggedIn = require('../../services/isLoggedIn');
 const Op = require('sequelize').Op
 const moment = require('moment');
 const daysInMonth = require('../../services/daysInMonth')
+const isTrialingOrSubscribed = require('../../services/isTrialingOrSubscribed');
 
 module.exports = app => {
 
-    app.get('/api/v1/notes', (req,res) => {
+    app.get('/api/v1/notes',(req,res) => {
 
       db.note.findAll({
         where: { 
@@ -18,9 +19,14 @@ module.exports = app => {
           }
         }
         }).then(notes => {
+
+          const data = {
+            notes: notes,
+            trialExpired: Date.now() > req.user.trial_end_date ? true : false
+          }
          
           // res.json(contacts)
-          res.status(200).json(notes)
+          res.status(200).json(data)
       }).catch(err => {
         console.log(err);
       });

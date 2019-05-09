@@ -1,11 +1,14 @@
 <div class="alert">
-
-    <% if (trialUser) { %>
-        <% if(trialUser.is_trialing) { %>
-        <p>You have <%= trialUser.days_remaining %> days remining on your trial. Write on! If you're ready <a href="/plans">sign up.</a></p>
-        <% } %>
+ 
+    <!-- check if trialUser is passed & if no stripe id is active-->
+    <% if (trialStatus && trialStatus.stripe_customer_id === null) { %>
+        <!-- if no stripe. check if trial_status is 'true'-->
+        <% if (trialStatus.is_trialing && trialStatus.days_remaining !== 0) { %>
+        <p>You have <%= trialStatus.days_remaining %> remaining on your trial. Write on! When you're ready, <a href="/plans">upgrade.</a></p>
+        <% } else { %>
+        <p>Your trial has expired. Posts will not be saved. To keep your streak going, <a href="/plans">upgrade.</a></p>
+            <% } %>
     </div> 
     <% } %>
-
 
 <br>

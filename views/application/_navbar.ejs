@@ -5,7 +5,7 @@
           <a class="navbar-item" href="/">
             <img src="/images/notebook.png">
           </a>
-          <a role="button" id="burger" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-turbolinks-permanent>
+          <a role="button" id="burger" class="navbar-burger burger" aria-label="menu" aria-expanded="false" >
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -21,11 +21,13 @@
                       <div class="navbar-item">
                         <a class="accent bold" href="/logout">Logout</a>
                       </div>
-
+                    <% } %>
+                    <% if(user && user.stripe_customer_id) { %>
                       <div class="navbar-item">
                           <a class="accent bold" href="/user/<%= user.id %>/subscriptions">Subscription</a>
                         </div>
-                  <% } else { %>
+                      <% } %>
+                  <% if(!user) { %>
                     <div class="navbar-item">
                       <a class="accent" href="/login">Login</a>
                     </div>

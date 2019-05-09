@@ -86,8 +86,7 @@ module.exports = app => {
       // although creating the customer throws an error if the card is bad /shrug?
       if(subStatus === 'active' && invoiceStatus === 'paid') {
 
-        user.is_trialing = false; 
-        user.trial_end_date = null;
+        user.is_trialing = false;
 
         const savedUser = await user.save();
 
@@ -130,59 +129,7 @@ module.exports = app => {
        
         res.render('purchase', { message: err.message, plan: req.query.plan});
     }
-
-    // db.user.findOne({
-    //   where: {id: req.user.id }
-    // }).then(foundUser => {
-
-    //   const user = foundUser.dataValues;
-
-    //   // creating customer in stripe
-    //   stripe.customers.create({
-    //     email: user.email,
-    //     source: req.body.stripeToken
-    //   }).then(newCustomer => {
-    //       stripe.subscriptions.create({
-    //         customer: newCustomer.id,
-    //         items: [
-    //           {
-    //             plan: plan
-    //           }
-    //         ],
-    //         expand: ['latest_invoice']
-    //     }).then(newStripeSub => {
-    //       // check on sub & payment status // 
-    //       if(newStripeSub.status === 'active' && newStripeSub.latest_invoice.status === 'paid') {
-
   
-    //         foundUser.is_trialing = false; 
-    //         foundUser.trial_end_date = null;
-
-    //         foundUser.save().then(savedUser => {
-
-    //           // create a new subscription
-    //           db.subscription.create({
-    //             token: newStripeSub.id,
-    //             userId: savedUser.id
-    //           }).then(newSubscription => {
-
-    //             console.log('new subscription created!:', newStripeSub)
-
-    //             res.render('thank_you', { confirmation: newStripeSub });
-    //           })
-
-    //         });
-
-    //       }
-
-    //     });
-
-    //   });
-
-    // }).catch(err => {
-    //   console.log(err);
-    // })
-
   });
 
   app.get('*', function(req, res) {

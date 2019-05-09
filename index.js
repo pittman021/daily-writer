@@ -41,34 +41,6 @@ app.use(flash());
     UA: 'UA-######-##'
   }
 
-// Passport Config //
-// db.sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('connection established');
-//   })
-//   .catch(err => {
-//     console.log('unable to connect', err);
-//   });
-
-// var generateHash = function(password) {
-//   return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
-// };
-// const userPassword = generateHash('pass');
-// var admin = {
-//   id: 0,
-//   username: 'tim',
-//   password: userPassword,
-//   createdAt: new Date(),
-//   updatedAt: new Date()
-// };
-//
-// db.AdminUsers.create(admin).then(newUser => {
-//   console.log('user created');
-// });
-
-db.sequelize.sync();
-
 // ROUTES //
 require('./routes/adminRoutes')(app);
 require('./routes/writeRoutes')(app);

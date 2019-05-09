@@ -8,13 +8,14 @@ module.exports = {
     try {
      await  queryInterface.addColumn('users', 'is_trialing', {
         type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: true
+        allowNull: false
       });
       await queryInterface.addColumn('users', 'trial_end_date', {
         type: Sequelize.DATE,
         defaultValue: moment().add('14', 'days')
       });
+
+      
       return Promise.resolve();
     } catch(e) {
       return Promise.reject(e);
