@@ -1,5 +1,6 @@
 const db = require('../models/index');
 const isLoggedIn = require('../services/isLoggedIn')
+const isRegistered = require('../services/isRegistered');
 const config = require('../config/keys');
 
 const stripe = require('stripe')(config.STRIPE_SECRET_KEY);
@@ -22,7 +23,7 @@ module.exports = app => {
     })
   })
 
-  app.get('/purchase', isLoggedIn, function(req,res) {
+  app.get('/purchase', isRegistered, function(req,res) {
     res.render('purchase', {plan: req.query.plan, message: ''})
   })
 
