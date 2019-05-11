@@ -6,7 +6,6 @@ const flash = require('express-flash');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
-
 // Turn these on when you initiate the DB // 
 require('./services/passport');
 
@@ -28,8 +27,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-
-
   app.locals.site =  {
       title: 'sit & bleed',
       description: '“There is nothing to writing. All you do is sit down at a typewriter and bleed.”'
@@ -49,7 +46,6 @@ require('./routes/adminRoutes')(app);
 require('./routes/writeRoutes')(app);
 require('./routes/api/notesRoutes')(app);
 require('./routes/pageRoutes')(app);
-
 
 let port = process.env.PORT || 3000;
 app.listen(port, () => {

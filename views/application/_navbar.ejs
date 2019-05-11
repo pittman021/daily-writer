@@ -5,14 +5,14 @@
           <a class="navbar-item" href="/">
             <img src="/images/notebook.png">
           </a>
-          <a role="button" id="burger" class="navbar-burger burger" aria-label="menu" aria-expanded="false" >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
+          <div class="navbar-burger burger" data-target="navMenu">
+              <span></span>
+              <span></span>
+              <span></span>
         </div>
+      </div>
     
-        <div class="navbar-menu">
+        <div class="navbar-menu" id="navMenu">
           <div class="navbar-end">
                     <% if(user) { %>
                       <div class="navbar-item">

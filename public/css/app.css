@@ -149,7 +149,6 @@ html {
 
   .forgot-password a {
       margin-right: 10px;
-
   }
 
   .footer {
@@ -176,8 +175,12 @@ html {
        background-color: lightgoldenrodyellow;
    }
 
-   .success {
+   .flash-success {
        background-color: lightgreen
+   }
+
+   .hide { 
+       display: none;
    }
 
 
