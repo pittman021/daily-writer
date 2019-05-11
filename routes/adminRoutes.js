@@ -31,7 +31,7 @@ module.exports = app => {
     
 
    await mail.sendMail({
-      from: site.support.email,
+      from: 'hello@freewritten.com',
       to: req.body.email,
       subject: 'Welcome to Simple Journal!',
       text: 'Welcome to Simple Journal. Do ya thang!',
