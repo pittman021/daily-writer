@@ -1,8 +1,8 @@
-
-
 const stripeCheckout = function() {
 
-const stripe = Stripe('pk_test_poPHkAGMA8BhtifFEJhTjAAV');
+const stripePublishableKey = document.querySelector('#stripeApiKey').dataset.value;
+
+const stripe = Stripe(stripePublishableKey);
     const elements = stripe.elements();
     const form = document.getElementById('payment-form');
     

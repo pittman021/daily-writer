@@ -1,4 +1,3 @@
-
 class Journal {
     constructor() {
         this.text = '';

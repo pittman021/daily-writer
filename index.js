@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const flash = require('express-flash');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const config = require("./config/keys");
 
 // Turn these on when you initiate the DB // 
 require('./services/passport');
@@ -40,6 +41,7 @@ app.use(function(req, res, next) {
   app.locals.google_analytics = {
     UA: 'UA-######-##'
   }
+  app.locals.config = config;
 
 // ROUTES //
 require('./routes/adminRoutes')(app);
