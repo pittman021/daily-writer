@@ -4,7 +4,6 @@ const db = require('../models/index');
 const mail = require('../services/nodeMailer');
 const crypto = require('crypto');
 const Op = require('sequelize').Op
-const bCrypt = require('bcrypt-nodejs');
 const generateHash = require('../services/generateHash');
 
 
@@ -65,8 +64,6 @@ module.exports = app => {
         req.flash('error', 'Oops. No account with that email address. Try again')
         res.redirect('/forgot');
       } else {
-
-    
 
       user.resetPasswordToken = token;
       user.resetPasswordExpires = Date.now() + 3600000 // 1 hour
@@ -141,8 +138,6 @@ module.exports = app => {
     } 
     
     if(req.body.new_password === req.body.confirm_password) {
-
-      
 
       const userPassword = await generateHash(req.body.new_password);
   
