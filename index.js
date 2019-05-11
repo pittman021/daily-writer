@@ -30,7 +30,9 @@ app.use(function(req, res, next) {
 
   app.locals.site =  {
       title: 'freewritten',
-      description: 'your daily freewriting tool. track your streak and unlock your genius. '
+      url: 'freewritten.com',
+      description: 'your daily freewriting tool. track your streak and unlock your genius.',
+      support_email: `support@${url}`
   }
   app.locals.author = {
       name: 'tim pittman',

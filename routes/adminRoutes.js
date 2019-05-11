@@ -6,8 +6,6 @@ const crypto = require('crypto');
 const Op = require('sequelize').Op
 const generateHash = require('../services/generateHash');
 
-
-
 module.exports = app => {
   // Login Form
   app.get('/login', function(req, res) {
@@ -33,7 +31,7 @@ module.exports = app => {
     
 
    await mail.sendMail({
-      from: 'hello@freewritten.com',
+      from: site.support.email,
       to: req.body.email,
       subject: 'Welcome to Simple Journal!',
       text: 'Welcome to Simple Journal. Do ya thang!',

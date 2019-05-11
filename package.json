@@ -1,7 +1,7 @@
 {
-  "name": "simple-journal",
+  "name": "freewritten",
   "version": "1.0.0",
-  "description": "",
+  "description": "your daily freewriting tool. track your streak and unlock your genius.",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
