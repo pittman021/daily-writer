@@ -5,7 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     is_trialing: DataTypes.BOOLEAN,
     stripe_customer_id: DataTypes.STRING,
-    trial_end_date: DataTypes.DATE
+    trial_end_date: DataTypes.DATE,
+    resetPasswordToken: DataTypes.STRING,
+    resetPasswordExpires: DataTypes.DATE
   }, {});
   user.associate = function(models) {
     user.hasMany(models.note, {

@@ -3,6 +3,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const bCrypt = require('bcrypt-nodejs');
 const db = require('../models/index');
 const moment = require('moment');
+const generateHash = require('../services/generateHash');
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -15,10 +16,6 @@ passport.deserializeUser(function(id, done) {
     return done(null, user);
   });
 });
-
-var generateHash = function(password) {
-  return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
-};
 
 passport.use(
   'local-signup',
@@ -37,9 +34,9 @@ passport.use(
 
         var data = {
           email: username,
-          password: userPassword
-          // is_trialing: true,
-          // trial_end_date:  moment(new Date(), "YYYY-MM-DD HH:mm:ss").add(14, 'days').toISOString()
+          password: userPassword,
+          is_trialing: true,
+          trial_end_date:  moment(new Date(), "YYYY-MM-DD HH:mm:ss").add(14, 'days').toISOString()
         };
         db.user.create(data).then(newUser => {
           return done(null, newUser);

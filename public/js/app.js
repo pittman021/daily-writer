@@ -1,3 +1,4 @@
+
 class Journal {
     constructor() {
         this.text = '';
@@ -98,12 +99,14 @@ class Journal {
                 this.text = this.data[this.isActive].content
                 this.buildButtonList();
                 this.render();
+
             } else {
             // if there is today's post. show it in textArea // 
             this.isActive = pos
             this.text = this.data[pos].content
             this.buildButtonList();
             this.render();
+         
             }
         }
 
@@ -114,11 +117,12 @@ class Journal {
     }
 
     render() {
+        const s = this.currentStreak > 1 ? 's' : ''
         this.textArea.value = this.text
         this.count.innerText = this.getWordCount(this.text);
         this.textArea.style.height = 'auto';
         this.textArea.style.height = (this.textArea.scrollHeight) + 'px';
-        this.currentStreakEl.innerText = this.currentStreak;
+        this.currentStreakEl.innerText = `Current Streak: ${this.currentStreak} day${s}`;
         
     }
 
@@ -285,6 +289,7 @@ class Journal {
 }
 
 new Journal();
+
 
 // (function() {
 //     var burger = document.querySelector('.burger');

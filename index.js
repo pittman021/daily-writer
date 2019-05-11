@@ -3,33 +3,36 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const methodOverride = require('method-override');
 const flash = require('express-flash');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 
 // Turn these on when you initiate the DB // 
 require('./services/passport');
-const db = require('./models/index');
-
-const bCrypt = require('bcrypt-nodejs');
 
 // configuration
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser('keyboard cat'));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
-app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 app.use(function(req, res, next) {
   res.locals.user = req.user;
+  res.locals.flashes = req.flash();
   next();
 });
-app.use(flash());
+
+
 
   app.locals.site =  {
-      title: 'simple journal',
-      description: 'the simplest place to write everyday and create your streak'
+      title: 'sit & bleed',
+      description: '“There is nothing to writing. All you do is sit down at a typewriter and bleed.”'
   }
   app.locals.author = {
       name: 'tim pittman',

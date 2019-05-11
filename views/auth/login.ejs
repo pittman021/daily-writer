@@ -7,9 +7,7 @@
 <div class="auth-box">
 			<h2>Login</h2><br>
 
-			<% if ( message.length > 0 ) { %>
-				<div class="flash"><%= message %></div>
-			<% } %>
+			<% include ./application/_flash.ejs %>
 
 			
 			<form action="/login" method="post">
@@ -23,9 +21,11 @@
 									<input class="input" type="password" name="password" placeholder="password" >
 					</div>
 				</div>
-				<input class="button" type="submit"></input>
+				<div class="forgot-password is-size-7"><a href="/forgot">Forgot Password?</a></div><br>
+				<input class="button" value="Login" type="submit"></input>
 			</form>
 			<br>
+			
 			<a href="/signup">Sign Up</a>
 
 		</div>
