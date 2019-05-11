@@ -12,7 +12,7 @@
       <% } %>
     <% } %>
 
-<div id="stripeApiKey" data-value="<%= config.SRIPE_PUBLISHABLE_KEY %>" ></div>
+<div id="stripeApiKey" data-value="<%= config.STRIPE_PUBLISHABLE_KEY %>" ></div>
 
 <form action="/charge?plan=<%= plan %>" method="post" id="payment-form">
     <div class="form-row">
