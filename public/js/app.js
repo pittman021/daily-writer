@@ -47,7 +47,7 @@ class Journal {
         }
 
         OnInput() {
-        
+            var that = this;
             const scrollParent = that.getScrollParent(this);
             const scrollTop = scrollParent ? scrollParent.scrollTop : null;
             const scrollLeft = scrollParent ? scrollParent.scrollLeft : null;
@@ -116,11 +116,12 @@ class Journal {
     }
 
     render() {
+        console.log(document.body);
         const s = this.currentStreak > 1 ? 's' : ''
         this.textArea.value = this.text
         this.count.innerText = this.getWordCount(this.text);
-        this.textArea.style.height = 'auto';
         this.textArea.style.height = (this.textArea.scrollHeight) + 'px';
+        window.scrollTo(0,document.body.scrollHeight);
         this.currentStreakEl.innerText = `Current Streak: ${this.currentStreak} day${s}`;
         
     }

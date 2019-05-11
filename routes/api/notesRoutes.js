@@ -20,9 +20,12 @@ module.exports = app => {
         }
         }).then(notes => {
 
+          let trialExpired = req.user.stripe_customer_id !== null ? false : Date.now() > req.user.trial_end_date ? true : false
+          console.log(req.user);
+
           const data = {
             notes: notes,
-            trialExpired: Date.now() > req.user.trial_end_date ? true : false
+            trialExpired: trialExpired
           }
          
           // res.json(contacts)
