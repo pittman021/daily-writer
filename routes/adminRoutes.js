@@ -34,7 +34,7 @@ module.exports = app => {
 
    await mail.sendMail({
       from: 'Simple Journal',
-      to: 'tim.pittman021@gmail.com',
+      to: req.body.email,
       subject: 'Welcome to Simple Journal!',
       text: 'Welcome to Simple Journal. Do ya thang!',
       html: '<p>Welcome to Simple Journal. Do ya thang</p>'
