@@ -33,7 +33,7 @@ module.exports = app => {
     
 
    await mail.sendMail({
-      from: 'Simple Journal',
+      from: 'hello@freewritten.com',
       to: req.body.email,
       subject: 'Welcome to Simple Journal!',
       text: 'Welcome to Simple Journal. Do ya thang!',
@@ -72,7 +72,7 @@ module.exports = app => {
       const newUser = await user.save();
 
       await mail.sendMail({
-        from: 'Keep Free Writing',
+        from: 'hello@freewritten.com',
         to: user.email,
         subject: 'Simple Journal Password Reset',
         text: `You are receiving this email because you requested a password reset link.  Please click on the following link or 
@@ -149,7 +149,7 @@ module.exports = app => {
       const newUser = user.save();
 
       await mail.sendMail({
-        from: 'Simple Journal',
+        from: 'hello@freewritten.com',
         to: user.email,
         subject: 'Your password has been changed',
         text: `Hello!
