@@ -28,8 +28,8 @@ app.use(function(req, res, next) {
 });
 
   app.locals.site =  {
-      title: 'sit & bleed',
-      description: '“There is nothing to writing. All you do is sit down at a typewriter and bleed.”'
+      title: 'freewritten',
+      description: 'your daily freewriting tool. track your streak and unlock your genius. '
   }
   app.locals.author = {
       name: 'tim pittman',

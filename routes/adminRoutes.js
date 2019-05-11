@@ -7,6 +7,7 @@ const Op = require('sequelize').Op
 const generateHash = require('../services/generateHash');
 
 
+
 module.exports = app => {
   // Login Form
   app.get('/login', function(req, res) {
@@ -71,7 +72,7 @@ module.exports = app => {
       const newUser = await user.save();
 
       await mail.sendMail({
-        from: 'Simple Journal',
+        from: 'Keep Free Writing',
         to: user.email,
         subject: 'Simple Journal Password Reset',
         text: `You are receiving this email because you requested a password reset link.  Please click on the following link or 
