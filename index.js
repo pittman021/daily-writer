@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
       title: 'freewritten',
       url: 'freewritten.com',
       description: 'your daily freewriting tool. track your streak and unlock your genius.',
-      support_email: `support@${url}`
+      support_email: `tim.pittman021@gmail.com`
   }
   app.locals.author = {
       name: 'tim pittman',
